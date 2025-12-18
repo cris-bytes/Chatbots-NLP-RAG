@@ -36,6 +36,7 @@ wheels/
 # Data
 data/raw/*
 !data/raw/.gitkeep
+!data/raw/fastapi_guide.txt
 data/processed/*
 !data/processed/.gitkeep
 data/vectorstore/*

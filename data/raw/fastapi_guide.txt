@@ -1,0 +1,265 @@
+FastAPI - Modern Web Framework for Building APIs with Python
+
+Introduction to FastAPI
+
+FastAPI is a modern, fast (high-performance), web framework for building APIs with Python 3.7+ based on standard Python type hints. It was created by Sebastián Ramírez and first released in December 2018.
+
+Key Features of FastAPI
+
+1. Fast Performance: Very high performance, on par with NodeJS and Go thanks to Starlette and Pydantic. FastAPI is one of the fastest Python frameworks available.
+
+2. Fast to Code: Increase the speed to develop features by about 200% to 300%. This is based on tests on an internal development team, building production applications.
+
+3. Fewer Bugs: Reduce about 40% of human (developer) induced errors. This is achieved through intelligent editor support and type checking.
+
+4. Intuitive: Great editor support with completion everywhere. Less time debugging and more time developing.
+
+5. Easy to Learn: Designed to be easy to use and learn. Less time reading documentation means more productivity.
+
+6. Short Code: Minimize code duplication. Multiple features from each parameter declaration. Fewer bugs.
+
+7. Robust: Get production-ready code with automatic interactive documentation. Compatible with standards like OpenAPI and JSON Schema.
+
+8. Standards-based: Based on and fully compatible with the open standards for APIs: OpenAPI (previously known as Swagger) and JSON Schema.
+
+Installation and Setup
+
+To install FastAPI, you need Python 3.7 or higher. Use pip to install FastAPI and an ASGI server like Uvicorn:
+
+pip install fastapi
+pip install uvicorn[standard]
+
+Creating Your First FastAPI Application
+
+Here is a simple example of a FastAPI application:
+
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
+@app.get("/items/{item_id}")
+def read_item(item_id: int, q: str = None):
+    return {"item_id": item_id, "q": q}
+
+To run this application, save it as main.py and execute:
+uvicorn main:app --reload
+
+The --reload flag enables auto-reload so the server will restart after code changes.
+
+Request Body and Pydantic Models
+
+FastAPI uses Pydantic for data validation. You can create request body models using Pydantic:
+
+from pydantic import BaseModel
+
+class Item(BaseModel):
+    name: str
+    description: str = None
+    price: float
+    tax: float = None
+
+@app.post("/items/")
+def create_item(item: Item):
+    return item
+
+Pydantic will automatically validate the incoming request data against the model schema.
+
+Path Parameters and Query Parameters
+
+Path parameters are part of the URL path and are declared in the function signature:
+
+@app.get("/users/{user_id}")
+def read_user(user_id: int):
+    return {"user_id": user_id}
+
+Query parameters are optional parameters that appear after the ? in the URL:
+
+@app.get("/items/")
+def read_items(skip: int = 0, limit: int = 10):
+    return {"skip": skip, "limit": limit}
+
+Request Validation
+
+FastAPI provides automatic request validation using Python type hints and Pydantic models. If validation fails, it automatically returns a clear error response with details about what went wrong.
+
+For example, if you declare a parameter as int and someone sends a string, FastAPI will return a 422 Unprocessable Entity error with a JSON body explaining the validation error.
+
+Response Models
+
+You can declare the response model using the response_model parameter:
+
+@app.post("/items/", response_model=Item)
+def create_item(item: Item):
+    return item
+
+This tells FastAPI to use that model to filter the output data and validate it.
+
+Dependency Injection
+
+FastAPI has a very powerful but intuitive Dependency Injection system. Dependencies are functions that can be shared across multiple path operations:
+
+from fastapi import Depends
+
+def common_parameters(q: str = None, skip: int = 0, limit: int = 100):
+    return {"q": q, "skip": skip, "limit": limit}
+
+@app.get("/items/")
+def read_items(commons: dict = Depends(common_parameters)):
+    return commons
+
+Security and Authentication
+
+FastAPI provides several tools for security and authentication:
+
+1. OAuth2 with Password and Bearer tokens
+2. API Keys in headers, query parameters, or cookies
+3. HTTP Basic authentication
+4. HTTP Digest authentication
+
+Example of OAuth2 with Password Bearer:
+
+from fastapi.security import OAuth2PasswordBearer
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+
+@app.get("/users/me")
+def read_users_me(token: str = Depends(oauth2_scheme)):
+    return {"token": token}
+
+Database Integration
+
+FastAPI works well with any database. Common choices include:
+
+1. SQL databases with SQLAlchemy ORM (PostgreSQL, MySQL, SQLite)
+2. NoSQL databases like MongoDB
+3. In-memory databases like Redis
+
+Example with SQLAlchemy:
+
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+SQLALCHEMY_DATABASE_URL = "sqlite:///./test.db"
+engine = create_engine(SQLALCHEMY_DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+Background Tasks
+
+FastAPI supports background tasks that should be executed after returning a response:
+
+from fastapi import BackgroundTasks
+
+def write_log(message: str):
+    with open("log.txt", "a") as log:
+        log.write(message)
+
+@app.post("/send-notification/")
+def send_notification(email: str, background_tasks: BackgroundTasks):
+    background_tasks.add_task(write_log, f"Notification sent to {email}")
+    return {"message": "Notification sent"}
+
+CORS (Cross-Origin Resource Sharing)
+
+To enable CORS in your FastAPI application:
+
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+Testing FastAPI Applications
+
+FastAPI applications can be tested using pytest and the TestClient:
+
+from fastapi.testclient import TestClient
+
+client = TestClient(app)
+
+def test_read_root():
+    response = client.get("/")
+    assert response.status_code == 200
+    assert response.json() == {"Hello": "World"}
+
+Automatic API Documentation
+
+One of FastAPI's best features is automatic interactive API documentation:
+
+1. Swagger UI: Available at /docs
+2. ReDoc: Available at /redoc
+
+These are automatically generated from your code and provide an interactive interface to test your API.
+
+Advanced Features
+
+WebSockets: FastAPI supports WebSocket connections for real-time communication.
+
+GraphQL: Can be integrated with libraries like Strawberry or Graphene.
+
+File Uploads: Support for file uploads with proper validation.
+
+Static Files: Serve static files like images, CSS, and JavaScript.
+
+Templates: Integration with Jinja2 templates for server-side rendering.
+
+Middleware: Custom middleware for request/response processing.
+
+Events: Startup and shutdown events for initialization and cleanup.
+
+Best Practices
+
+1. Use type hints everywhere for better validation and documentation
+2. Organize your code into routers for better modularity
+3. Use dependency injection for shared logic
+4. Implement proper error handling with HTTPException
+5. Use environment variables for configuration
+6. Write tests for your endpoints
+7. Use async/await for I/O operations when possible
+8. Document your API with descriptions and examples
+9. Version your API properly
+10. Use Pydantic settings for configuration management
+
+Performance Optimization
+
+1. Use async endpoints for I/O-bound operations
+2. Implement caching with Redis or similar
+3. Use database connection pooling
+4. Enable compression middleware
+5. Use CDN for static assets
+6. Implement rate limiting
+7. Optimize database queries
+8. Use background tasks for heavy operations
+9. Monitor performance with tools like Prometheus
+10. Load balance with multiple workers
+
+Deployment Considerations
+
+FastAPI applications can be deployed using:
+
+1. Uvicorn with multiple workers
+2. Gunicorn with Uvicorn workers
+3. Docker containers
+4. Kubernetes clusters
+5. Cloud platforms (AWS, GCP, Azure)
+6. Serverless platforms (AWS Lambda, Google Cloud Functions)
+
+Example Docker deployment:
+
+FROM python:3.9
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY . .
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+
+Conclusion
+
+FastAPI is a powerful, modern framework that combines high performance with ease of use. Its automatic documentation, type safety, and async support make it an excellent choice for building production-ready APIs. The framework continues to evolve with an active community and regular updates.
