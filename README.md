@@ -697,7 +697,7 @@ Este proyecto está bajo la Licencia MIT. Ver [LICENSE](LICENSE) para más detal
 
 - Proyecto: RAG Chatbot System
 - Stack: Python, FastAPI, FAISS, OpenAI, Sentence-Transformers
-- Fecha: 2024
+- Fecha: 2025
 
 ---
 
