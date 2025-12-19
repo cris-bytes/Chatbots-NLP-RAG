@@ -3,8 +3,8 @@
 ## PROYECTO COMPLETADO
 
 **Repository**: https://github.com/cris-bytes/Chatbots-NLP-RAG
-**Branch**: `claude/ai-chatbot-rag-rXUqa`
-**Commits**: 2 commits con todo el código y documentación
+**Branch**: `main`
+**Commits**: Múltiples commits con todo el código y documentación
 
 ---
 
@@ -165,7 +165,6 @@ Incluye:
 # 1. Clonar y preparar
 git clone https://github.com/cris-bytes/Chatbots-NLP-RAG.git
 cd Chatbots-NLP-RAG
-git checkout claude/ai-chatbot-rag-rXUqa
 
 # 2. Instalar dependencias
 python -m venv venv
@@ -296,7 +295,7 @@ python main.py --interactive
 ## CONTACTO
 
 **Repository**: https://github.com/cris-bytes/Chatbots-NLP-RAG
-**Branch**: `claude/ai-chatbot-rag-rXUqa`
+**Branch**: `main`
 
 Para preguntas o aclaraciones sobre la implementación, revisar:
 1. README.md - Guía de uso

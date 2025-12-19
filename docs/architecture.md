@@ -174,7 +174,7 @@ Este sistema implementa un chatbot conversacional basado en **RAG (Retrieval Aug
 **Alternativas consideradas**:
 - GPT-4: Mayor precisión pero 10x más costoso
 - Llama 2: Gratuito pero requiere GPU y es más lento
-- Claude: Excelente pero menos accesible
+- Anthropic API: Excelente pero menos accesible
 
 ### 5. API REST (`api.py`)
 
