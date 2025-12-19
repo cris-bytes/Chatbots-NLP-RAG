@@ -1,6 +1,6 @@
 # Arquitectura del Sistema RAG Chatbot
 
-## 📋 Tabla de Contenidos
+## Tabla de Contenidos
 
 1. [Resumen Ejecutivo](#resumen-ejecutivo)
 2. [Arquitectura General](#arquitectura-general)
@@ -15,7 +15,7 @@
 
 ---
 
-## 🎯 Resumen Ejecutivo
+## Resumen Ejecutivo
 
 Este sistema implementa un chatbot conversacional basado en **RAG (Retrieval Augmented Generation)** capaz de responder preguntas sobre documentación técnica. El sistema combina:
 
@@ -26,7 +26,7 @@ Este sistema implementa un chatbot conversacional basado en **RAG (Retrieval Aug
 
 ---
 
-## 🏗️ Arquitectura General
+## Arquitectura General
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -93,7 +93,7 @@ Este sistema implementa un chatbot conversacional basado en **RAG (Retrieval Aug
 
 ---
 
-## 🧩 Componentes del Sistema
+## Componentes del Sistema
 
 ### 1. Document Processor (`document_processor.py`)
 
@@ -118,12 +118,12 @@ Este sistema implementa un chatbot conversacional basado en **RAG (Retrieval Aug
 **Modelo elegido**: `sentence-transformers/all-MiniLM-L6-v2`
 
 **Justificación**:
-- ✅ Balance perfecto entre calidad y velocidad
-- ✅ Dimensión: 384 (eficiente en memoria)
-- ✅ Multilenguaje (español e inglés)
-- ✅ Pre-entrenado en tareas de similitud semántica
-- ✅ No requiere GPU (puede correr en CPU)
-- ✅ Gratuito y open-source
+- - Balance perfecto entre calidad y velocidad
+- - Dimensión: 384 (eficiente en memoria)
+- - Multilenguaje (español e inglés)
+- - Pre-entrenado en tareas de similitud semántica
+- - No requiere GPU (puede correr en CPU)
+- - Gratuito y open-source
 
 **Alternativas consideradas**:
 - `text-embedding-ada-002` (OpenAI): Mejor calidad pero costoso
@@ -137,11 +137,11 @@ Este sistema implementa un chatbot conversacional basado en **RAG (Retrieval Aug
 **Tecnología elegida**: FAISS (Facebook AI Similarity Search)
 
 **Justificación**:
-- ✅ Extremadamente rápido para búsqueda de similitud
-- ✅ Soporta millones de vectores en memoria
-- ✅ No requiere servidor externo
-- ✅ Gratuito y open-source
-- ✅ Integración simple con NumPy
+- - Extremadamente rápido para búsqueda de similitud
+- - Soporta millones de vectores en memoria
+- - No requiere servidor externo
+- - Gratuito y open-source
+- - Integración simple con NumPy
 
 **Configuración**:
 - Índice: `IndexFlatIP` (Inner Product para cosine similarity)
@@ -160,10 +160,10 @@ Este sistema implementa un chatbot conversacional basado en **RAG (Retrieval Aug
 **LLM elegido**: OpenAI GPT-3.5-turbo (con fallback)
 
 **Justificación**:
-- ✅ Excelente calidad de respuestas
-- ✅ Sigue instrucciones precisamente
-- ✅ Bajo costo por token
-- ✅ API estable y bien documentada
+- - Excelente calidad de respuestas
+- - Sigue instrucciones precisamente
+- - Bajo costo por token
+- - API estable y bien documentada
 
 **Control de Alucinaciones**:
 1. **Prompt Engineering**: Instrucciones explícitas de usar solo el contexto
@@ -183,11 +183,11 @@ Este sistema implementa un chatbot conversacional basado en **RAG (Retrieval Aug
 **Framework elegido**: FastAPI
 
 **Justificación**:
-- ✅ Alto rendimiento (comparable a Node.js)
-- ✅ Type hints nativos con Pydantic
-- ✅ Documentación automática (Swagger/ReDoc)
-- ✅ Async/await nativo
-- ✅ Fácil deployment
+- - Alto rendimiento (comparable a Node.js)
+- - Type hints nativos con Pydantic
+- - Documentación automática (Swagger/ReDoc)
+- - Async/await nativo
+- - Fácil deployment
 
 **Endpoints**:
 - `POST /ask`: Enviar pregunta y recibir respuesta
@@ -196,7 +196,7 @@ Este sistema implementa un chatbot conversacional basado en **RAG (Retrieval Aug
 
 ---
 
-## 🔄 Flujo de Datos
+## Flujo de Datos
 
 ### Pipeline de Ingesta
 
@@ -240,7 +240,7 @@ Este sistema implementa un chatbot conversacional basado en **RAG (Retrieval Aug
 
 ---
 
-## 🎨 Decisiones de Diseño
+## Decisiones de Diseño
 
 ### 1. Chunking Strategy
 
@@ -280,7 +280,7 @@ Este sistema implementa un chatbot conversacional basado en **RAG (Retrieval Aug
 
 ---
 
-## ⚠️ Limitaciones
+## Limitaciones
 
 ### Limitaciones Actuales
 
@@ -317,7 +317,7 @@ Este sistema implementa un chatbot conversacional basado en **RAG (Retrieval Aug
 
 ---
 
-## 🚀 Escalabilidad en Producción
+## Escalabilidad en Producción
 
 ### Arquitectura Escalable Propuesta
 
@@ -428,7 +428,7 @@ services:
 
 ---
 
-## 🧠 Memoria Conversacional
+## Memoria Conversacional
 
 ### Implementación Propuesta
 
@@ -490,7 +490,7 @@ services:
 
 ---
 
-## 📱 Integración con Canales
+## Integración con Canales
 
 ### WhatsApp
 
@@ -566,7 +566,7 @@ def handle_message(message, say):
 
 ---
 
-## 📊 Monitoreo y Observabilidad
+## Monitoreo y Observabilidad
 
 ### Métricas Clave
 
@@ -672,7 +672,7 @@ logger.info(
 
 ---
 
-## 🔐 Seguridad y Compliance
+## Seguridad y Compliance
 
 ### Consideraciones de Seguridad
 
@@ -695,32 +695,32 @@ logger.info(
 
 ---
 
-## 📈 Roadmap Futuro
+## Roadmap Futuro
 
 ### Fase 1 (1-3 meses)
-- ✅ MVP funcional
-- ✅ API REST básica
-- ✅ Integración OpenAI
-- 🔲 Tests automatizados
-- 🔲 CI/CD pipeline
+- - MVP funcional
+- - API REST básica
+- - Integración OpenAI
+- - Tests automatizados
+- - CI/CD pipeline
 
 ### Fase 2 (3-6 meses)
-- 🔲 Memoria conversacional
-- 🔲 Múltiples modelos de embeddings
-- 🔲 Caché con Redis
-- 🔲 Integración WhatsApp
-- 🔲 Dashboard de métricas
+- - Memoria conversacional
+- - Múltiples modelos de embeddings
+- - Caché con Redis
+- - Integración WhatsApp
+- - Dashboard de métricas
 
 ### Fase 3 (6-12 meses)
-- 🔲 Multi-tenant support
-- 🔲 Fine-tuning de modelos
-- 🔲 A/B testing framework
-- 🔲 Feedback loop automático
-- 🔲 Vector store distribuido
+- - Multi-tenant support
+- - Fine-tuning de modelos
+- - A/B testing framework
+- - Feedback loop automático
+- - Vector store distribuido
 
 ---
 
-## 📚 Referencias
+## Referencias
 
 - [FastAPI Documentation](https://fastapi.tiangolo.com/)
 - [Sentence Transformers](https://www.sbert.net/)

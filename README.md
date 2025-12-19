@@ -1,4 +1,4 @@
-# 🤖 AI Chatbot con RAG (Retrieval Augmented Generation)
+# AI Chatbot con RAG (Retrieval Augmented Generation)
 
 [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-green.svg)](https://fastapi.tiangolo.com/)
@@ -8,7 +8,7 @@
 
 ---
 
-## 📋 Tabla de Contenidos
+## Tabla de Contenidos
 
 - [Descripción del Proyecto](#-descripción-del-proyecto)
 - [Características Principales](#-características-principales)
@@ -27,7 +27,7 @@
 
 ---
 
-## 🎯 Descripción del Proyecto
+## Descripción del Proyecto
 
 Este proyecto implementa un **chatbot RAG (Retrieval Augmented Generation)** completo que:
 
@@ -39,47 +39,47 @@ Este proyecto implementa un **chatbot RAG (Retrieval Augmented Generation)** com
 
 ### Técnicas Implementadas
 
-- ✅ **Embeddings**: Sentence-Transformers (all-MiniLM-L6-v2)
-- ✅ **Vector Store**: FAISS (Facebook AI Similarity Search)
-- ✅ **RAG**: Retrieval Augmented Generation
-- ✅ **LLM**: OpenAI GPT-3.5-turbo
-- ✅ **Prompt Engineering**: Control de alucinaciones
-- ✅ **Recuperación Contextual**: Top-K similarity search
-- ✅ **API REST**: FastAPI con documentación automática
+- - **Embeddings**: Sentence-Transformers (all-MiniLM-L6-v2)
+- - **Vector Store**: FAISS (Facebook AI Similarity Search)
+- - **RAG**: Retrieval Augmented Generation
+- - **LLM**: OpenAI GPT-3.5-turbo
+- - **Prompt Engineering**: Control de alucinaciones
+- - **Recuperación Contextual**: Top-K similarity search
+- - **API REST**: FastAPI con documentación automática
 
 ---
 
-## ✨ Características Principales
+## Características Principales
 
-### 🔹 Ingesta Inteligente de Documentos
+### Ingesta Inteligente de Documentos
 
 - Soporte para múltiples formatos (PDF, HTML, texto)
 - Limpieza y normalización automática
 - Chunking con overlap para mantener contexto
 - Metadata tracking
 
-### 🔹 Búsqueda Vectorial Eficiente
+### Búsqueda Vectorial Eficiente
 
 - Embeddings de 384 dimensiones
 - Similitud coseno con FAISS
 - Búsqueda en milisegundos
 - Persistencia en disco
 
-### 🔹 RAG Avanzado
+### RAG Avanzado
 
 - Control de alucinaciones con threshold de relevancia
 - Confidence scoring
 - Fallback inteligente cuando no hay información
 - Context quality assessment
 
-### 🔹 API REST Moderna
+### API REST Moderna
 
 - FastAPI con validación automática
 - Documentación interactiva (Swagger/ReDoc)
 - CORS habilitado
 - Type safety con Pydantic
 
-### 🔹 Conversación Multi-Turn (Básico)
+### Conversación Multi-Turn (Básico)
 
 - Cada pregunta es independiente
 - Preparado para extensión con memoria conversacional
@@ -87,7 +87,7 @@ Este proyecto implementa un **chatbot RAG (Retrieval Augmented Generation)** com
 
 ---
 
-## 🏗️ Arquitectura
+## Arquitectura
 
 ```
 ┌────────────────────────────────────────────────────────────┐
@@ -110,7 +110,7 @@ Para más detalles, ver [docs/architecture.md](docs/architecture.md).
 
 ---
 
-## 📦 Requisitos
+## Requisitos
 
 ### Software
 
@@ -138,7 +138,7 @@ Ver [requirements.txt](requirements.txt) para la lista completa.
 
 ---
 
-## 🚀 Instalación
+## Instalación
 
 ### 1. Clonar el Repositorio
 
@@ -182,7 +182,7 @@ OPENAI_API_KEY=sk-your-api-key-here
 
 ---
 
-## ⚡ Uso Rápido
+## Uso Rápido
 
 ### 1. Ingestar Documento
 
@@ -276,7 +276,7 @@ curl -X POST "http://localhost:8000/ask" \
 
 ---
 
-## 📄 Documento Técnico Seleccionado
+## Documento Técnico Seleccionado
 
 ### Documento: FastAPI - Modern Web Framework Guide
 
@@ -292,13 +292,13 @@ curl -X POST "http://localhost:8000/ask" \
 
 ### Tipos de Preguntas que puede Responder
 
-✅ **Instalación**: "How do I install FastAPI?"
-✅ **Configuración**: "What are FastAPI's key features?"
-✅ **Desarrollo**: "How do I create a FastAPI endpoint?"
-✅ **Validación**: "How does FastAPI handle request validation?"
-✅ **Seguridad**: "What security features does FastAPI offer?"
-✅ **Deployment**: "How can I deploy FastAPI to production?"
-✅ **Best Practices**: "What are FastAPI best practices?"
+- **Instalación**: "How do I install FastAPI?"
+- **Configuración**: "What are FastAPI's key features?"
+- **Desarrollo**: "How do I create a FastAPI endpoint?"
+- **Validación**: "How does FastAPI handle request validation?"
+- **Seguridad**: "What security features does FastAPI offer?"
+- **Deployment**: "How can I deploy FastAPI to production?"
+- **Best Practices**: "What are FastAPI best practices?"
 
 ### Retos del Texto
 
@@ -345,7 +345,7 @@ Chatbots-NLP-RAG/
 
 ---
 
-## 📚 API Documentation
+## API Documentation
 
 ### Endpoints
 
@@ -415,7 +415,7 @@ Una vez iniciado el servidor, acceder a:
 
 ---
 
-## 💡 Ejemplos de Uso
+## Ejemplos de Uso
 
 ### Ejemplo 1: Ingestar tu Propio Documento
 
@@ -469,7 +469,7 @@ askChatbot("How do I create a FastAPI endpoint?");
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### Ejecutar Tests
 
@@ -506,7 +506,7 @@ def test_answer_quality():
 
 ---
 
-## 🐳 Deployment
+## Deployment
 
 ### Docker
 
@@ -583,7 +583,7 @@ git push heroku main
 
 ---
 
-## 🔧 Configuración Avanzada
+## Configuración Avanzada
 
 ### Cambiar Modelo de Embeddings
 
@@ -619,7 +619,7 @@ TEMPERATURE=0.3       # Respuestas más deterministas
 
 ---
 
-## 🤝 Contribución
+## Contribución
 
 Este proyecto es una prueba técnica, pero las contribuciones son bienvenidas.
 
@@ -641,7 +641,7 @@ Este proyecto es una prueba técnica, pero las contribuciones son bienvenidas.
 
 ---
 
-## 📊 Métricas de Calidad
+## Métricas de Calidad
 
 ### Cobertura de Código
 
@@ -662,7 +662,7 @@ flake8 src/
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Error: "Vector store not found"
 
@@ -685,13 +685,13 @@ python main.py --ingest data/raw/fastapi_guide.txt
 
 ---
 
-## 📝 Licencia
+## Licencia
 
 Este proyecto está bajo la Licencia MIT. Ver [LICENSE](LICENSE) para más detalles.
 
 ---
 
-## 👤 Autor
+## Autor
 
 **Prueba Técnica - Ingeniero IA/ML**
 
@@ -701,7 +701,7 @@ Este proyecto está bajo la Licencia MIT. Ver [LICENSE](LICENSE) para más detal
 
 ---
 
-## 🙏 Agradecimientos
+## Agradecimientos
 
 - [FastAPI](https://fastapi.tiangolo.com/) por el excelente framework
 - [Sentence-Transformers](https://www.sbert.net/) por los modelos de embeddings
@@ -710,7 +710,7 @@ Este proyecto está bajo la Licencia MIT. Ver [LICENSE](LICENSE) para más detal
 
 ---
 
-## 📖 Recursos Adicionales
+## Recursos Adicionales
 
 - [Architecture Documentation](docs/architecture.md)
 - [FastAPI Official Docs](https://fastapi.tiangolo.com/)
